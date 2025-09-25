@@ -56,70 +56,41 @@
   </p>
 </section>
 
-<!-- Formulario -->
-<section id="formulario" class="py-16 bg-white">
-  <div class="max-w-3xl mx-auto px-6 bg-gray-100 rounded-3xl shadow-xl p-10">
-    <h3 class="text-2xl font-bold text-[#171E3D] mb-8 text-center">Formulario de Afiliación</h3>
+<!-- Formulario de Afiliación -->
+<section id="formulario" class="py-12 bg-gray-100">
+  <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-md">
+    <h2 class="text-2xl font-bold mb-6 text-center">Formulario de Afiliación</h2>
 
-    <!-- FORMULARIO SOLO NETLIFY -->
-    <form name="afiliacion" method="POST" data-netlify="true" enctype="multipart/form-data" class="space-y-6">
+    <form name="afiliacion" method="POST" data-netlify="true" class="space-y-6">
       <!-- Campo oculto obligatorio para Netlify -->
       <input type="hidden" name="form-name" value="afiliacion">
 
-      <input type="text" name="nombre" placeholder="Nombre completo" required 
-        class="w-full border border-gray-300 rounded-lg p-3 text-[#171E3D] focus:ring-2 focus:ring-[#D90B15]">
-
-      <input type="number" name="numero_identificacion" placeholder="Documento de identificación" required 
-        class="w-full border border-gray-300 rounded-lg p-3 text-[#171E3D] focus:ring-2 focus:ring-[#D90B15]">
-
-      <input type="email" name="correo" placeholder="Correo electrónico" required 
-        class="w-full border border-gray-300 rounded-lg p-3 text-[#171E3D] focus:ring-2 focus:ring-[#D90B15]">
-
-      <input type="tel" name="telefono" placeholder="Teléfono" required 
-        class="w-full border border-gray-300 rounded-lg p-3 text-[#171E3D] focus:ring-2 focus:ring-[#D90B15]">
-
-      <!-- Desplegable -->
-      <div class="mb-4">
-        <label for="tipo" class="block text-[#171E3D] font-semibold mb-2">Selecciona una opción</label>
-        <select name="tipo" id="tipo" class="w-full border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-[#D90B15]">
-          <option value="">Por favor elige una opción</option>
-          <option value="camara">Candidato Cámara de Representantes</option>
-          <option value="senado">Candidato Senado</option>
-          <option value="liderazgo">Liderazgo en mi localidad</option>
-          <option value="empresarios">Empresarios</option>
-          <option value="programatico">Programático</option>
-          <option value="eventos">Eventos y logística</option>
-          <option value="comunicaciones">Comunicaciones y Marketing</option>
-          <option value="deportes">Deportes</option>
-          <option value="mujeres">Club de mujeres</option>
-          <option value="etnicos">Grupos étnicos y cultura</option>
-          <option value="colonias">Colonias</option>
-          <option value="escuela">Escuela de liderazgo</option>
-          <option value="juventudes">Juventudes</option>
-          <option value="lgbtiq">Comunidad LGBTIQ+</option>
-          <option value="desayunos">Desayunos</option>
-          <option value="universidades">Universidades</option>
-          <option value="otros">Otros</option>
-        </select>
+      <!-- Campos -->
+      <div>
+        <label class="block mb-2 font-semibold">Nombre completo</label>
+        <input type="text" name="nombre" required 
+               class="w-full p-3 border rounded-lg focus:ring focus:ring-[#D90B15]">
       </div>
 
-      <textarea name="comentarios" rows="4" placeholder="Comentarios / objecciones" 
-        class="w-full border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-[#D90B15]"></textarea>
+      <div>
+        <label class="block mb-2 font-semibold">Correo electrónico</label>
+        <input type="email" name="correo" required 
+               class="w-full p-3 border rounded-lg focus:ring focus:ring-[#D90B15]">
+      </div>
 
-      <input type="file" name="archivo" class="w-full border border-gray-300 rounded-lg p-3 text-black">
-
-      <div class="flex items-center space-x-2">
-        <input type="checkbox" id="autorizacion" name="autorizacion" required class="h-4 w-4 text-[#D90B15]">
-        <label for="autorizacion" class="text-sm text-black">
-          En cumplimiento de la ley 1581 de 2012 solicitamos su autorización para poder utilizar sus datos de contacto. 
-          <strong>Autorizo.</strong>
-        </label>
+      <div>
+        <label class="block mb-2 font-semibold">Comentarios</label>
+        <textarea name="comentarios" rows="4" 
+                  class="w-full p-3 border rounded-lg focus:ring focus:ring-[#D90B15]"></textarea>
       </div>
 
       <!-- Botón -->
-      <button type="submit" class="w-full bg-[#D90B15] text-white py-3 rounded-lg font-bold hover:bg-[#b00911] transition">
-        Enviar
-      </button>
+      <div class="text-center">
+        <button type="submit" 
+                class="px-6 py-3 bg-[#D90B15] text-white font-semibold rounded-xl shadow-lg hover:bg-red-700 transition">
+          Enviar Afiliación
+        </button>
+      </div>
     </form>
   </div>
 </section>
@@ -137,3 +108,4 @@
 
 </body>
 </html>
+
