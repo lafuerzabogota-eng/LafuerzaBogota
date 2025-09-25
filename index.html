@@ -1,11 +1,69 @@
+<!-- Page cached by LiteSpeed Cache 7.2 on 2025-09-08 16:32:48 -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afíliate - La Fuerza de la Paz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Arial', sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+<!-- Banner con Logo -->
+<header class="w-full bg-white">
+  <img src="Logo.PNG" 
+       alt="Logo La Fuerza de la Paz" 
+       class="w-full h-40 md:h-56 lg:h-72 object-contain mx-auto">
+</header>
+
+<!-- Hero Section (con degradado más alto y texto centrado) -->
+<section class="relative bg-[#171E3D] text-white">
+  <!-- Capa de degradado -->
+  <div class="absolute inset-0 bg-gradient-to-r from-[#171E3D] via-[#171E3D] to-[#D90B15] opacity-90"></div>
+  
+  <!-- Contenido -->
+  <div class="relative z-10 container mx-auto px-6 py-32 flex flex-col items-center justify-center text-center">
+    <div class="max-w-2xl">
+      <h1 class="text-3xl md:text-5xl font-bold mb-6">La Fuerza Bogotá</h1>
+      <p class="mt-4 text-lg text-gray-200">
+        Afíliate como militante y haz parte de la transformación social y política que soñamos juntos.
+      </p>
+      <a href="#formulario" 
+         class="inline-block mt-6 px-8 py-3 bg-[#D90B15] text-white font-semibold rounded-xl shadow-lg hover:bg-red-700 transition">
+        Afíliate Ahora
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Video -->
+<div class="mt-20 md:mt-0 flex justify-center w-full mb-12">
+  <video autoplay loop controls 
+         class="rounded-2xl shadow-xl border-4 border-white w-full max-w-[700px] h-auto object-cover mt-12">
+    <source src="Video fuerza Bogota.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- Sección Quiénes Somos -->
+<section class="py-16 bg-gray-50 text-center">
+  <h2 class="text-3xl md:text-4xl font-bold text-[#171E3D]">¿Quiénes Somos?</h2>
+  <p class="mt-10 max-w-2xl mx-auto text-lg text-gray-700">
+    Somos un movimiento político que cree en la paz como camino, en la justicia social y en la participación ciudadana. 
+    Con tu apoyo, fortalecemos nuestra voz y logramos un cambio real para Colombia.
+  </p>
+</section>
+
 <!-- Formulario -->
 <section id="formulario" class="py-16 bg-white">
   <div class="max-w-3xl mx-auto px-6 bg-gray-100 rounded-3xl shadow-xl p-10">
     <h3 class="text-2xl font-bold text-[#171E3D] mb-8 text-center">Formulario de Afiliación</h3>
 
-    <!-- FORMULARIO NETLIFY -->
-    <form id="afiliacionForm" name="afiliacion" method="POST" data-netlify="true" action="/gracias.html" class="space-y-6" enctype="multipart/form-data">
-      <!-- Campo oculto obligatorio -->
+    <!-- FORMULARIO con id + Netlify -->
+    <form id="afiliacionForm" name="afiliacion" method="POST" data-netlify="true" enctype="multipart/form-data" class="space-y-6">
+      <!-- Campo oculto obligatorio para Netlify -->
       <input type="hidden" name="form-name" value="afiliacion">
 
       <input type="text" name="nombre" placeholder="Nombre completo" required 
@@ -66,3 +124,49 @@
   </div>
 </section>
 
+<!-- Script -->
+<script>
+document.getElementById("afiliacionForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  
+  const data = {
+    nombre: this.nombre.value,
+    numero_identificacion: this.numero_identificacion.value,
+    correo: this.correo.value,
+    telefono: this.telefono.value,
+    tipo: this.tipo.value,
+    comentarios: this.comentarios.value
+  };
+
+  // URL de tu Google Apps Script
+  const scriptURL = "https://script.google.com/macros/s/AKfycbyhLlrvKiK2cG6SOzpMw9uu_4CukcEErOSQ6yoFXbJIibaPO_cXdNKHK6NeHOvX9tcA2Q/exec";
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(res => {
+    alert("✅ Afiliación enviada con éxito");
+    this.reset();
+  })
+  .catch(err => {
+    alert("❌ Error al enviar la afiliación. Intenta de nuevo.");
+    console.error(err);
+  });
+});
+</script>
+
+<!-- Ubicación -->
+<section class="py-16 bg-[#171E3D] text-white text-center">
+  <h3 class="text-2xl font-bold mb-4">Nuestra Sede</h3>
+  <p class="text-lg">Av Cra 24 #39B-08 Piso 4 Parkway - Bogotá</p>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#0F142B] text-gray-300 py-6 text-center">
+  <p class="font-semibold">© 2025 La Fuerza de la Paz. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
