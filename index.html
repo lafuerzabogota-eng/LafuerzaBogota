@@ -1,12 +1,14 @@
-<!-- index.html -->
+<!-- Page cached by LiteSpeed Cache 7.2 on 2025-09-08 16:32:48 -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Afíliate - La Fuerza de la Paz</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style> body { font-family: 'Arial', sans-serif; } </style>
+  <style>
+    body { font-family: 'Arial', sans-serif; }
+  </style>
 </head>
 <body class="bg-white text-gray-900">
 
@@ -19,7 +21,10 @@
 
 <!-- Hero Section (con degradado más alto y texto centrado) -->
 <section class="relative bg-[#171E3D] text-white">
+  <!-- Capa de degradado -->
   <div class="absolute inset-0 bg-gradient-to-r from-[#171E3D] via-[#171E3D] to-[#D90B15] opacity-90"></div>
+  
+  <!-- Contenido -->
   <div class="relative z-10 container mx-auto px-6 py-32 flex flex-col items-center justify-center text-center">
     <div class="max-w-2xl">
       <h1 class="text-3xl md:text-5xl font-bold mb-6">La Fuerza Bogotá</h1>
@@ -56,15 +61,8 @@
   <div class="max-w-3xl mx-auto px-6 bg-gray-100 rounded-3xl shadow-xl p-10">
     <h3 class="text-2xl font-bold text-[#171E3D] mb-8 text-center">Formulario de Afiliación</h3>
 
-    <!-- FORMULARIO: Netlify + Apps Script (doble respaldo) -->
-    <form id="afiliacionForm"
-          name="afiliacion"
-          method="POST"
-          data-netlify="true"
-          action="/gracias.html"
-          enctype="multipart/form-data"
-          class="space-y-6">
-
+    <!-- FORMULARIO SOLO NETLIFY -->
+    <form name="afiliacion" method="POST" data-netlify="true" enctype="multipart/form-data" class="space-y-6">
       <!-- Campo oculto obligatorio para Netlify -->
       <input type="hidden" name="form-name" value="afiliacion">
 
@@ -126,53 +124,6 @@
   </div>
 </section>
 
-<!-- SCRIPT: envía a Apps Script (opcional) y luego hace submit para Netlify -->
-<script>
-(function(){
-  const form = document.getElementById('afiliacionForm');
-  if (!form) return;
-
-  // <-- Cambia aquí por tu URL de Apps Script (si quieres usarlo) -->
-  const scriptURL = "https://script.google.com/macros/s/AKfycbyhLlrvKiK2cG6SOzpMw9uu_4CukcEErOSQ6yoFXbJIibaPO_cXdNKHK6NeHOvX9tcA2Q/exec";
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-
-    // bloqueo visual del botón
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn ? submitBtn.textContent : null;
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando...';
-    }
-
-    // Recopilar datos con FormData
-    const fd = new FormData(form);
-    const payload = {};
-    fd.forEach((value, key) => {
-      // omitimos archivos en este envío JSON (Netlify los recibirá en el submit final)
-      if (value instanceof File) return;
-      payload[key] = value;
-    });
-
-    // Enviar a Apps Script (no bloquea el envío a Netlify si falla)
-    fetch(scriptURL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-    .catch(err => {
-      console.warn('Apps Script error (se ignorará y se continuará con Netlify):', err);
-    })
-    .finally(() => {
-      // ahora enviamos el formulario de forma tradicional para que Netlify lo capture
-      // form.submit() evita volver a disparar los handlers de submit
-      form.submit();
-    });
-  });
-})();
-</script>
-
 <!-- Ubicación -->
 <section class="py-16 bg-[#171E3D] text-white text-center">
   <h3 class="text-2xl font-bold mb-4">Nuestra Sede</h3>
@@ -186,4 +137,3 @@
 
 </body>
 </html>
-
